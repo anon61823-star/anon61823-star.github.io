@@ -1,28 +1,304 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home</title>
-<style>
-  body{font:16px/1.5 system-ui, sans-serif; margin:40px auto; max-width:800px; padding:0 16px;}
-  header,footer{opacity:.7}
-  nav a{margin-right:12px}
-  code{background:#f4f4f4; padding:2px 4px; border-radius:4px}
-</style>
-<header>
-  <h1>Your Site</h1>
-  <nav>
-    <a href="/">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>SpINR: Spectral Domain Neural Reconstruction for Passband FMCW Radars</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-2: #fafafa;
+      --panel: #f5f5f5;
+      --text: #1a1a1a;
+      --muted: #666666;
+      --line: #e0e0e0;
+      --accent: #000000;
+      --shadow: 0 2px 8px rgba(0,0,0,.08);
+      --radius: 8px;
+      --maxw: 900px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    
+    /* Navigation */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      gap: 1.5rem;
+    }
+    .brand { 
+      font-weight: 800; 
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+    .nav-links { 
+      display: flex; 
+      gap: 2rem;
+      font-size: .95rem;
+      font-weight: 500;
+    }
+    .nav-links a {
+      transition: color .2s;
+      color: var(--muted);
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    
+    /* Hero */
+    .hero {
+      max-width: var(--maxw);
+      margin: 4rem auto 3rem;
+      padding: 0 1.5rem;
+    }
+    .title { 
+      font-size: 2.5rem; 
+      font-weight: 800; 
+      margin-bottom: .5rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    .subtitle { 
+      color: var(--muted); 
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+    .links-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: 1.5rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: .65rem 1.2rem;
+      background: transparent;
+      color: var(--accent);
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: .9rem;
+      transition: all .2s;
+      border: 2px solid var(--accent);
+    }
+    .btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+    
+    /* Sections */
+    .section {
+      max-width: var(--maxw);
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: .5rem;
+    }
+    
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 2rem;
+      line-height: 1.8;
+    }
+    .panel p { margin-bottom: 1rem; }
+    .panel p:last-child { margin-bottom: 0; }
+    
+    figure { margin: 0; }
+    figure img { 
+      width: 100%; 
+      border-radius: var(--radius); 
+      display: block;
+      border: 1px solid var(--line);
+    }
+    figcaption { 
+      margin-top: .75rem; 
+      color: var(--muted); 
+      font-size: .9rem; 
+      text-align: center;
+      line-height: 1.5;
+    }
+    
+    /* Code */
+    .code-container {
+      position: relative;
+      margin-top: 1rem;
+    }
+    pre {
+      overflow-x: auto;
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #fafafa;
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .85rem;
+      line-height: 1.6;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--text);
+      padding: .5rem .8rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: .85rem;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .copy-btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+    
+    /* Footer */
+    .footer {
+      max-width: var(--maxw);
+      margin: 4rem auto 2rem;
+      padding: 1.5rem 1.5rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-size: .9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .title { font-size: 2rem; }
+      .nav-links { font-size: .85rem; gap: 1rem; }
+      .section-title { font-size: 1.5rem; }
+      .panel { padding: 1.5rem; }
+    }
+    
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">SpINR</div>
+      <div class="nav-links">
+        <a href="#abstract">Abstract</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#bibtex">Citation</a>
+      </div>
+    </div>
   </nav>
-</header>
-<main>
-  <h2>Welcome</h2>
-  <p>This is a minimal GitHub Pages site.</p>
-</main>
-<footer>
-  <p>© <span id="y"></span> Your Name</p>
-</footer>
-<script>document.getElementById("y").textContent=new Date().getFullYear()</script>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="subtitle">Anonymous Submission · ICLR 2026</div>
+    <h1 class="title">SpINR: Spectral Domain Neural Reconstruction for Passband FMCW Radars</h1>
+    
+    <div class="links-bar">
+      <a class="btn" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">Paper</a>
+      <a class="btn" href="https://github.com/anonymous/SpINR" target="_blank" rel="noopener">Code</a>
+      <a class="btn" href="#" target="_blank" rel="noopener">Dataset</a>
+    </div>
+  </header>
+
+  <!-- Abstract -->
+  <section id="abstract" class="section">
+    <h2 class="section-title">Abstract</h2>
+    <div class="panel">
+      <p>
+        We present <strong>SpINR</strong>, a novel neural framework for high-fidelity volumetric reconstruction using Frequency-Modulated Continuous-Wave (FMCW) radar. Traditional radar imaging techniques, such as backprojection, often assume ideal signal models and require dense aperture sampling, leading to limitations in resolution and generalization. Our core contribution is a fully differentiable frequency-domain forward model that captures the complex radar response using closed-form synthesis, paired with an implicit neural representation (INR) for continuous volumetric scene modeling.
+      </p>
+      <p>
+        Unlike time-domain baselines, SpINR directly supervises the complex frequency spectrum, preserving spectral fidelity while drastically reducing computational overhead. Additionally, we introduce sparsity and smoothness regularization to disambiguate sub-bin ambiguities that arise at high carrier frequencies and fine range resolutions.
+      </p>
+      <p>
+        Experimental results show that SpINR significantly outperforms both classical and learning-based baselines, with a <strong>52.6% improvement in reconstruction quality</strong> and <strong>32% improvement in latency</strong>. SpINR sets a new precedent for neural radar reconstruction, especially under high-frequency regimes where prior methods degrade significantly.
+      </p>
+    </div>
+  </section>
+
+  <!-- Method Overview -->
+  <section id="method" class="section">
+    <h2 class="section-title">Method Overview</h2>
+    <figure class="panel">
+      <img src="static/spinr_overview.png" alt="SpINR system overview showing FMCW radar measurements, spectral forward model, INR network, and spectral supervision" />
+      <figcaption>
+        SpINR proposes a spectral forward model and spectral supervision for FMCW signal synthesis. The system takes FMCW radar measurements and uses an implicit neural representation (INR) to predict scatterer intensity, which is then synthesized through a differentiable frequency-domain forward model for spectral supervision.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- Results -->
+  <section id="results" class="section">
+    <h2 class="section-title">Results</h2>
+    <figure class="panel">
+      <img src="static/spinr_results.png" alt="Comparison of volumetric reconstructions showing Range Quantization, TF-TS, TF-SS, Backprojection, SpINR Baseband, SpINR Passband, and Ground Truth" />
+      <figcaption>
+        Comparison of volumetric reconstructions for Range Quantization (RQ), Time-domain Forward with Time Supervision (TF-TS), Time-domain Forward with Spectral Supervision (TF-SS), classical Backprojection, and our SpINR (both Baseband and Passband variants). SpINR achieves superior reconstruction quality with accurate geometric details and minimal artifacts.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- BibTeX -->
+  <section id="bibtex" class="section">
+    <h2 class="section-title">Citation</h2>
+    <div class="panel">
+      <div class="code-container">
+        <button class="copy-btn" onclick="copyBibtex()">Copy</button>
+        <pre id="bibtex">@inproceedings{anonymous2026spinr,
+  title     = {SpINR: Spectral Domain Neural Reconstruction for Passband FMCW Radars},
+  author    = {Anonymous},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2026}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Anonymous Submission · ICLR 2026</p>
+  </footer>
+
+  <script>
+    function copyBibtex() {
+      const text = document.getElementById('bibtex').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = original, 1500);
+      });
+    }
+  </script>
+</body>
 </html>
