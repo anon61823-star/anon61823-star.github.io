@@ -634,12 +634,12 @@
 <!-- ============ HERO ============ -->
 <header class="hero">
   <div class="container">
-    <div class="venue">Anonymous Submission · NeurIPS 2026</div>
+    <!-- <div class="venue">Anonymous Submission · NeurIPS 2026</div> -->
 
     <img src="moray-logo.png" alt="Moray" class="hero-logo">
 
     <h1 class="title">
-      <span class="moray-word">Moray </span> : Spectrally Parameterized<br>
+      Spectrally Parameterized<br>
       Neural Inverse Reconstruction
     </h1>
 
@@ -648,13 +648,12 @@
       validated on real 77&nbsp;GHz FMCW radar.
     </p>
 
-    <div class="authors">Anonymous Authors</div>
-    <div class="affiliation">Affiliation withheld for double-blind review</div>
+    <div class="authors">Nirupam Roy</div>
+    <!-- <div class="affiliation">Affiliation withheld for double-blind review</div> -->
 
     <div class="links">
       <!-- <a href="#" class="link-btn accent">Paper</a> -->
-      <a href="https://drive.google.com/file/d/1BevpbXUbIi-KimU-gpq7p0akKCTMyibG/view?usp=share_link" class="link-btn">Code</a>
-      <a href="#bibtex" class="link-btn">BibTeX</a>
+      <!-- <a href="#bibtex" class="link-btn">BibTeX</a> -->
     </div>
   </div>
 </header>
@@ -697,12 +696,73 @@
           degrades more gracefully under data limitations.
         </p>
       </div>
-      <div class="split-media">
+      <!-- <div class="split-media">
         <a class="paper-thumb"
            href="https://openreview.net/attachment?id=etBlEXilAm&amp;name=pdf"
            target="_blank" rel="noopener">
           <img src="images/hero/paper_image.png" alt="Paper — first page (opens OpenReview PDF)">
         </a>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ OVERVIEW ============ -->
+<section>
+  <div class="container-wider">
+    <div class="split-row">
+      <div class="split-text">
+        <h2>Overview</h2>
+        <p>
+          Many recent reconstruction methods formulate imaging as an
+          analysis-by-synthesis problem: a neural scene representation is
+          optimized so that measurements synthesized through a differentiable
+          forward model match the observations. This paradigm has been
+          extended to physical sensing modalities including transient
+          imaging, ultrasound, RF propagation, and coherent acoustics. In
+          these systems, optimization behavior depends not only on the
+          neural representation itself, but also on how the physical forward
+          operator is represented inside the differentiable pipeline —
+          particularly in <em>coherent</em> sensing systems such as radar,
+          sonar, and optical coherence tomography, where measurements retain
+          carrier-phase information and the forward model operates on highly
+          oscillatory complex-valued signals.
+        </p>
+        <p>
+          Most existing differentiable sensing pipelines synthesize a
+          time-domain signal, sample it, and apply a spectral transform
+          before evaluating the reconstruction loss. While physically
+          faithful, this fixes a particular computational structure:
+          gradients propagate through the entire synthesis pipeline
+          regardless of whether all intermediate computations contribute
+          useful information. At multi-GHz carrier frequencies, where scene
+          information is concentrated in a small subset of spectral
+          components, this leads to unstable optimization and characteristic
+          artifacts. <strong>Moray</strong> instead parameterizes the
+          forward model directly in the spectral domain: each measurement
+          bin is evaluated in closed form through an analytically derived
+          complex kernel, producing the same input-output mapping through a
+          substantially shorter differentiable graph in which bins can be
+          evaluated independently and supervision restricted to
+          geometrically meaningful components.
+        </p>
+        <p>
+          We pair this with <strong>Phase-Coherent Manifold
+          Parameterization</strong>, a scene representation that jointly
+          learns reflectivity and a deformable surface manifold so the
+          integration domain follows the object rather than a fixed imaging
+          plane — eliminating wavelength-scale fringe artifacts that arise
+          from depth mismatch at 77&nbsp;GHz
+          (&lambda;&nbsp;&approx;&nbsp;3.9&nbsp;mm). Instantiated on real
+          measurements from a synthetic-aperture mmWave radar, Moray
+          consistently improves reconstruction fidelity, suppresses
+          background artifacts, and degrades more gracefully under data
+          limitations. More broadly, the results suggest that, in neural
+          inverse problems, exposing the appropriate analytical structure of
+          the sensing physics to the optimizer can be as important as the
+          choice of neural representation itself.
+        </p>
       </div>
     </div>
   </div>
@@ -990,7 +1050,7 @@
 
         <div class="fraction-control">
           <label>Aperture fraction</label>
-          <input type="range" id="fractionSlider" min="0" max="2" value="0" step="1">
+          <input type="range" id="fractionSlider" min="0" max="2" value="2" step="1">
           <div class="fraction-ticks">
             <span>50%</span>
             <span>25%</span>
@@ -1004,7 +1064,7 @@
 
 
 <!-- ============ BIBTEX ============ -->
-<section id="bibtex">
+<!-- <section id="bibtex">
   <div class="container">
     <h2>Citation</h2>
     <p style="color: var(--ink-soft); font-size: 0.95rem;">
@@ -1025,14 +1085,14 @@
 }</pre>
     </div>
   </div>
-</section>
+</section> -->
 
 
 <!-- ============ FOOTER ============ -->
-<footer>
+<!-- <footer>
   <img src="moray-logo.png" alt="">
   <div>Anonymous NeurIPS 2026 Submission</div>
-</footer>
+</footer> -->
 
 
 <script>
