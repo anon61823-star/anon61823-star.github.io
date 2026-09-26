@@ -3,10 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anonymous</title>
+<title>Floor-Plan-Conditioned Generative Priors for Sparse Sound-Field Reconstruction</title>
 <style>
-  html, body { margin: 0; background: #ffffff; }
+  body {
+    margin: 0;
+    background: #ffffff;
+    color: #1a1a1a;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 64px 24px; }
+  h1 { font-size: clamp(1.5rem, 4.5vw, 2.1rem); line-height: 1.25; text-align: center; margin: 0 0 28px; }
+  .links { display: flex; justify-content: center; gap: 12px; margin-bottom: 48px; }
+  .links a {
+    padding: 8px 24px;
+    border-radius: 999px;
+    background: #1a1a1a;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .links a:hover { background: #444444; }
+  h2 { font-size: 1.35rem; text-align: center; margin: 0 0 12px; }
+  p { margin: 0; }
 </style>
 </head>
-<body></body>
+<body>
+<main>
+  <h1>Floor-Plan-Conditioned Generative Priors for Sparse Sound-Field Reconstruction</h1>
+  <div class="links">
+    <a href="#">Code</a>
+    <a href="#">Dataset</a>
+  </div>
+  <h2>Abstract</h2>
+  <p>Many spatial audio applications, such as rendering AR/VR acoustics or room correction, require knowledge of the sound field throughout a room, yet measuring it densely takes hundreds of microphone positions. With only a few microphones, many different fields fit the same measurements. Floor plans are often available and constrain the field before any measurement is taken. However, floor plans describe only the walls and doorways, not the furniture and materials that also shape the acoustic field. We therefore learn a distribution of sound fields consistent with a floor plan, using a flow-based generative prior that maps a cheap image-source field, computed from the floor plan alone, to high-fidelity wave-simulated fields. Given a few measurements, posterior sampling recovers the field of a specific room. Because the model is generative, the variance across posterior samples gives an uncertainty map along with the reconstruction. This map tracks the reconstruction error, so it can indicate where to place the next microphones. We evaluate on real multi-room apartment floor plans with wave-simulated acoustics. On floor plans unseen during training, our method reduces average reconstruction error by 5.5&nbsp;dB with 128 microphones relative to kernel interpolation given the same floor-plan information, and the gain grows as microphones are added. With 16 microphones, it is at least as accurate as the same baseline with 64. Active sampling based on posterior uncertainty improves reconstruction by up to 0.7&nbsp;dB over spatially uniform placement, reaching the same accuracy with 15% fewer microphones.</p>
+</main>
+</body>
 </html>
