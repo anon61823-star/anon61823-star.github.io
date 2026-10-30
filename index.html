@@ -32,8 +32,7 @@
 <main>
   <h1>Floor-Plan-Conditioned Generative Priors for Sparse Sound-Field Reconstruction</h1>
   <div class="links">
-    <a href="#">Code</a>
-    <a href="#">Dataset</a>
+    <a href="https://drive.google.com/file/d/16SHGFHvZw8bJD5lRmn-Vn4h6fCI1jnyK/view?usp=share_link">Code</a>
   </div>
   <h2>Abstract</h2>
   <p>Many spatial audio applications, such as rendering AR/VR acoustics or room correction, require knowledge of the sound field throughout a room, yet measuring it densely takes hundreds of microphone positions. With only a few microphones, many different fields fit the same measurements. Floor plans are often available and constrain the field before any measurement is taken. However, floor plans describe only the walls and doorways, not the furniture and materials that also shape the acoustic field. We therefore learn a distribution of sound fields consistent with a floor plan, using a flow-based generative prior that maps a cheap image-source field, computed from the floor plan alone, to high-fidelity wave-simulated fields. Given a few measurements, posterior sampling recovers the field of a specific room. Because the model is generative, the variance across posterior samples gives an uncertainty map along with the reconstruction. This map tracks the reconstruction error, so it can indicate where to place the next microphones. We evaluate on real multi-room apartment floor plans with wave-simulated acoustics. On floor plans unseen during training, our method reduces average reconstruction error by 5.5&nbsp;dB with 128 microphones relative to kernel interpolation given the same floor-plan information, and the gain grows as microphones are added. With 16 microphones, it is at least as accurate as the same baseline with 64. Active sampling based on posterior uncertainty improves reconstruction by up to 0.7&nbsp;dB over spatially uniform placement, reaching the same accuracy with 15% fewer microphones.</p>
